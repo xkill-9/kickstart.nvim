@@ -24,7 +24,5 @@ keymap.set("n", "sv", ":vsplit<Return><C-w>w", { silent = true })
 keymap.set("n", "<leader>qq", vim.cmd.Ex)
 
 -- Move lines
-keymap.set("n", "<A-j>", ":m .+1<CR>==")
-keymap.set("n", "<A-k>", ":m .-2<CR>==")
-keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
-keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
