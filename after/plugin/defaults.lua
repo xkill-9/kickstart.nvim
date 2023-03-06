@@ -38,10 +38,10 @@ keymap.set('n', 'dw', 'vb"_d')
 keymap.set('n', '<leader>nt', ':tabedit<Return>', { silent = true, desc = "[N]ew [T]ab" })
 
 -- Move through windows/buffers
-keymap.set('', 'sh', '<C-w>h', { desc = "Move left" })
-keymap.set('', 'sk', '<C-w>k', { desc = "Move down" })
-keymap.set('', 'sj', '<C-w>j', { desc = "Move up" })
-keymap.set('', 'sl', '<C-w>l', { desc = "Move right" })
+keymap.set('', 'sh', '<C-w>h', { desc = "Go to the left window" })
+keymap.set('', 'sk', '<C-w>k', { desc = "Go to the up window" })
+keymap.set('', 'sj', '<C-w>j', { desc = "Go to the down window" })
+keymap.set('', 'sl', '<C-w>l', { desc = "Go to the right window" })
 
 -- Close window
-keymap.set('n', '<leader>cw', '<C-w>q', { desc = "[C]lose [Window]" })
+keymap.set('n', '<leader>cw', '<C-w>q', { desc = "[C]lose [W]indow" })
