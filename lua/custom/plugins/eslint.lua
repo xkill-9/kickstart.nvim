@@ -8,7 +8,7 @@ return {
 	config = function()
 		local eslint = require('eslint')
 		eslint.setup({
-			bin = 'eslint_d'
+			bin = 'eslint_d',
 		})
 	end
 }
