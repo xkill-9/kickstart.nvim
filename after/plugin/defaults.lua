@@ -25,7 +25,7 @@ keymap.set('n', '-', '<C-x>');
 -- Split window
 keymap.set("n", "ss", ":split<Return><C-w>w", { silent = true })
 keymap.set("n", "sv", ":vsplit<Return><C-w>w", { silent = true })
-keymap.set("n", "<leader>qq", vim.cmd.Ex)
+keymap.set("n", "<leader>q", ':bd', { desc = '[Q]uit buffer' })
 
 -- Move lines
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
