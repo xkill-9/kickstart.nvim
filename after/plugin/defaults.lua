@@ -9,8 +9,6 @@ vim.opt.title = true
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.wrap = false
-vim.opt.path:append { "**" }
-vim.opt.wildignore:append { "*/node_modules/*" }
 
 -- MAPS
 
@@ -35,7 +33,7 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 keymap.set('n', 'dw', 'vb"_d')
 
 -- New tabs
-keymap.set('n', '<leader>nt', ':tabedit<Return>', { silent = true, desc = "[N]ew [T]ab" })
+keymap.set('n', '<leader>t', ':tabedit<Return>', { silent = true, desc = "New [T]ab" })
 
 -- Move through windows/buffers
 keymap.set('', 'sh', '<C-w>h', { desc = "Go to the left window" })

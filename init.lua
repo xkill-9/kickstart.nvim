@@ -268,9 +268,15 @@ require('telescope').setup {
       },
     },
   },
+  pickers = {
+    find_files = {
+      find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix" }
+    }
+  },
   extensions = {
     file_browser = {
       theme = 'dropdown',
+      depth = false,
       hijack_netrw = true,
     },
   },
@@ -298,7 +304,14 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<C-p>', require('telescope.builtin').git_files, { desc = 'Search in current Git project' })
+vim.keymap.set('n', '<C-p>', function()
+  vim.fn.system('git rev-parse --is-inside-work-tree')
+  if vim.v.shell_error == 0 then
+    require('telescope.builtin').git_files()
+  else
+    require('telescope.builtin').find_files()
+  end
+end, { desc = 'Search in current project' })
 
 -- Open file browser
 vim.api.nvim_set_keymap('n', '<leader>fb', ':Telescope file_browser path=%:p:h select_buffer=true previewer=false<CR>',
