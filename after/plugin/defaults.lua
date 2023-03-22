@@ -43,3 +43,6 @@ keymap.set('', 'sl', '<C-w>l', { desc = "Go to the right window" })
 
 -- Close window
 keymap.set('n', '<leader>cw', '<C-w>q', { desc = "[C]lose [W]indow" })
+
+-- Exit terminal
+keymap.set('t', '<Esc>', [[<C-\><C-n>]]);
