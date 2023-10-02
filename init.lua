@@ -335,7 +335,7 @@ vim.api.nvim_set_keymap('n', '<leader>fb', ':Telescope file_browser path=%:p:h s
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {
-    'c', 'css', 'cpp', 'go', 'html', 'javascript',
+    'c', 'css', 'cpp', 'go', 'graphql', 'html', 'javascript',
     'lua', 'markdown', 'markdown_inline', 'python',
     'rust', 'svelte', 'tsx', 'typescript', 'help', 'vim'
   },
@@ -454,6 +454,7 @@ local servers = {
   emmet_ls = {},
   cssls = {},
   eslint = {},
+  graphql = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
