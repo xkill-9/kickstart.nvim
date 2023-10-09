@@ -1,5 +1,5 @@
 return {
-	'glepnir/lspsaga.nvim',
+	'nvimdev/lspsaga.nvim',
 	event = 'BufRead',
 	dependencies = {
 		'nvim-tree/nvim-web-devicons',
@@ -10,7 +10,7 @@ return {
 		local keymap = vim.keymap.set
 
 		-- Find definition
-		keymap('n', '<leader>fd', '<cmd>Lspsaga lsp_finder<CR>', { desc = '[F]ind [D]efinition' })
+		keymap('n', '<leader>fd', '<cmd>Lspsaga finder<CR>', { desc = '[F]ind [D]efinition' })
 
 		-- Preview definition
 		keymap('n', '<leader>pd', '<cmd>Lspsaga preview_definition<CR>', { desc = '[P]review [D]efinition' })
