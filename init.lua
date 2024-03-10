@@ -645,7 +645,8 @@ require('lazy').setup({
         typescript = { { 'prettierd', 'prettier' } },
         typescriptreact = { { 'prettierd', 'prettier' } },
 
-        ['_'] = { 'codespell', { 'prettierd', 'prettier' } },
+        ['*'] = { 'codespell' },
+        ['_'] = { { 'prettierd', 'prettier' } },
       },
     },
   },
