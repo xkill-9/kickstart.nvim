@@ -725,9 +725,17 @@ require('lazy').setup({
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+        -- SERVERS
+        'cssls',
+        'html',
+        'emmet_ls',
+        'tsserver',
+        'graphql',
+        -- LINTERS
         'stylua', -- Used to format lua code
         'prettier', -- Opinionated formatter
         'prettierd', -- Like prettier above but faster
+        'codespell', -- Code spell checker
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -790,7 +798,7 @@ require('lazy').setup({
         typescript = { { 'prettierd', 'prettier' } },
         typescriptreact = { { 'prettierd', 'prettier' } },
 
-        ['_'] = { { 'prettierd', 'prettier' } },
+        ['_'] = { 'codespell', { 'prettierd', 'prettier' } },
       },
     },
   },
