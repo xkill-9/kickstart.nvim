@@ -425,7 +425,6 @@ require('lazy').setup({
             require('telescope.themes').get_dropdown(),
           },
           ['file_browser'] = {
-            hijack_netrw = true,
             depth = false,
           },
         },
