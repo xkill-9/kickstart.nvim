@@ -11,14 +11,14 @@ return {
         function()
           harpoon:list():append()
         end,
-        desc = '[A]ppend to Harpoon',
+        desc = '[H]arpoon [A]ppend',
       },
       {
         '<leader>hl',
         function()
           harpoon.ui:toggle_quick_menu(harpoon:list())
         end,
-        desc = 'Harpoon [L]ist',
+        desc = '[H]arpoon [L]ist',
       },
       {
         '<C-P>',
