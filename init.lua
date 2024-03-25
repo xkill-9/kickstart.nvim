@@ -368,9 +368,6 @@ require('lazy').setup({
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
 
-  -- -- Browse Shortcut stories
-  -- { 'xkill-9/dot.nvim', dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' } },
-
   -- File browser
   { 'nvim-telescope/telescope-file-browser.nvim', dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' } },
 
@@ -443,7 +440,6 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
       pcall(require('telescope').load_extension, 'file_browser')
-      pcall(require('telescope').load_extension, 'dot')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -457,9 +453,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-
-      -- Browser Shortcut stories
-      vim.keymap.set('n', '<leader>.s', ':Telescope dot stories <CR>', { desc = 'Shortcut [S]tories', noremap = true })
 
       -- Open file_browser with the path of the current buffer
       vim.keymap.set('n', '<leader>fb', ':Telescope file_browser path=%:p:h select_buffer=true<CR>', { desc = '[F]ile [B]rowser', noremap = true })
