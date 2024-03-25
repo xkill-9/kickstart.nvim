@@ -4,22 +4,27 @@ return {
   dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
   keys = function()
     local harpoon = require 'harpoon'
+    local wk = require 'which-key'
 
+    -- Register mappings
+    wk.register({
+      h = {
+        name = '[H]arpoon',
+        a = {
+          function()
+            harpoon:list():append()
+          end,
+          '[A]ppend',
+        },
+        l = {
+          function()
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+          end,
+          '[L]ist',
+        },
+      },
+    }, { prefix = '<leader>' })
     return {
-      {
-        '<leader>ha',
-        function()
-          harpoon:list():append()
-        end,
-        desc = '[H]arpoon [A]ppend',
-      },
-      {
-        '<leader>hl',
-        function()
-          harpoon.ui:toggle_quick_menu(harpoon:list())
-        end,
-        desc = '[H]arpoon [L]ist',
-      },
       {
         '<C-P>',
         function()
