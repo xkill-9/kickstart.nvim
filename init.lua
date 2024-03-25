@@ -157,7 +157,6 @@ vim.opt.inccommand = 'split'
 
 -- Use relative line numbers
 vim.opt.relativenumber = true
-
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
