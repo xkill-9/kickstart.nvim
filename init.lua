@@ -84,6 +84,8 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
+-- Set python provider
+vim.g.python3_host_prog = '/usr/bin/python3'
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -637,6 +639,7 @@ require('lazy').setup({
         'prettier', -- Opinionated formatter
         'prettierd', -- Like prettier above but faster
         'codespell', -- Code spell checker
+        'beautysh', -- Bash formatter
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -671,6 +674,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        sh = { 'beautysh' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
