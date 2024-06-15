@@ -1,6 +1,6 @@
 -- Browse Shortcut stories
 return {
-  'xkill-9/dot.nvim',
+  dir = '~/Documents/dot.nvim',
   dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
   config = function()
     local wk = require 'which-key'
