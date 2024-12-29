@@ -550,7 +550,21 @@ require('lazy').setup({
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.server_capabilities.documentHighlightProvider then
+          if not client then
+            return
+          end
+
+          if client.supports_method 'textDocument/formatting' then
+            -- Format the current buffer on save
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              buffer = event.buf,
+              callback = function()
+                vim.lsp.buf.format { bufnr = event.buf, id = client.id }
+              end,
+            })
+          end
+
+          if client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
               callback = vim.lsp.buf.document_highlight,
@@ -628,12 +642,6 @@ require('lazy').setup({
         'emmet_ls',
         'tsserver',
         'graphql',
-        -- LINTERS
-        'stylua', -- Used to format lua code
-        'prettier', -- Opinionated formatter
-        'prettierd', -- Like prettier above but faster
-        'codespell', -- Code spell checker
-        'beautysh', -- Bash formatter
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -650,50 +658,6 @@ require('lazy').setup({
         },
       }
     end,
-  },
-
-  { -- Autoformat
-    'stevearc/conform.nvim',
-    opts = {
-      notify_on_error = false,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        return {
-          timeout_ms = 500,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-        }
-      end,
-      formatters_by_ft = {
-        lua = { 'stylua' },
-        sh = { 'beautysh' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        javascript = { { 'prettierd', 'prettier' } },
-        javascriptreact = { { 'prettierd', 'prettier' } },
-        typescript = { { 'prettierd', 'prettier' } },
-        typescriptreact = { { 'prettierd', 'prettier' } },
-        ['vue'] = { 'prettierd' },
-        ['css'] = { 'prettierd' },
-        ['scss'] = { 'prettierd' },
-        ['less'] = { 'prettierd' },
-        ['html'] = { 'prettierd' },
-        ['json'] = { 'prettierd' },
-        ['jsonc'] = { 'prettierd' },
-        ['yaml'] = { 'prettierd' },
-        ['markdown'] = { 'prettierd' },
-        ['markdown.mdx'] = { 'prettierd' },
-        ['graphql'] = { 'prettierd' },
-        ['handlebars'] = { 'prettierd' },
-
-        ['*'] = { 'codespell' },
-      },
-    },
   },
 
   { -- Autocompletion
