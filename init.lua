@@ -731,12 +731,6 @@ require('lazy').setup({
         'emmet_ls',
         'tsserver',
         'graphql',
-        -- LINTERS
-        'stylua', -- Used to format lua code
-        'prettier', -- Opinionated formatter
-        'prettierd', -- Like prettier above but faster
-        'codespell', -- Code spell checker
-        'beautysh', -- Bash formatter
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -795,24 +789,21 @@ require('lazy').setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        javascript = { { 'prettierd', 'prettier', stop_after_first = true } },
-        javascriptreact = { { 'prettierd', 'prettier' } },
-        typescript = { { 'prettierd', 'prettier' } },
-        typescriptreact = { { 'prettierd', 'prettier' } },
-        ['vue'] = { 'prettierd' },
-        ['css'] = { 'prettierd' },
-        ['scss'] = { 'prettierd' },
-        ['less'] = { 'prettierd' },
-        ['html'] = { 'prettierd' },
-        ['json'] = { 'prettierd' },
-        ['jsonc'] = { 'prettierd' },
-        ['yaml'] = { 'prettierd' },
-        ['markdown'] = { 'prettierd' },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        vue = { 'prettierd' },
+        css = { 'prettierd' },
+        scss = { 'prettierd' },
+        less = { 'prettierd' },
+        html = { 'prettierd' },
+        json = { 'prettierd' },
+        jsonc = { 'prettierd' },
+        yaml = { 'prettierd' },
+        markdown = { 'prettierd' },
         ['markdown.mdx'] = { 'prettierd' },
-        ['graphql'] = { 'prettierd' },
-        ['handlebars'] = { 'prettierd' },
-
-        ['*'] = { 'codespell' },
+        graphql = { 'prettierd' },
       },
     },
   },
