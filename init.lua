@@ -584,15 +584,15 @@ require('lazy').setup({
             return
           end
 
-          if client.supports_method 'textDocument/formatting' then
-            -- Format the current buffer on save
-            vim.api.nvim_create_autocmd('BufWritePre', {
-              buffer = event.buf,
-              callback = function()
-                vim.lsp.buf.format { bufnr = event.buf, id = client.id }
-              end,
-            })
-          end
+          -- if client.supports_method 'textDocument/formatting' then
+          --   -- Format the current buffer on save
+          --   vim.api.nvim_create_autocmd('BufWritePre', {
+          --     buffer = event.buf,
+          --     callback = function()
+          --       vim.lsp.buf.format { bufnr = event.buf, id = client.id }
+          --     end,
+          --   })
+          -- end
 
           if client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -626,6 +626,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        biome = {},
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
