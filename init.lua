@@ -91,7 +91,7 @@ vim.g.python3_host_prog = '/usr/bin/python3'
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = ','
 
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
@@ -382,7 +382,7 @@ require('lazy').setup({
 
       -- Hijack netrw with telescope.find_files
       local find_files_hijack_netrw = vim.api.nvim_create_augroup(
-      'find_files_hijack_netrw', { clear = true })
+        'find_files_hijack_netrw', { clear = true })
       -- clear FileExplorer appropriately to prevent netrw from launching on folders
       -- netrw may or may not be loaded before telescope-find-files
       -- conceptual credits to nvim-tree and telescope-file-browser
@@ -443,10 +443,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes')
-        .get_dropdown {
-          winblend = 10,
-          previewer = false,
-        })
+          .get_dropdown {
+            winblend = 10,
+            previewer = false,
+          })
       end, { desc = '[/] Fuzzily search in current buffer' })
 
       -- Also possible to pass additional configuration options.
@@ -842,7 +842,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'html', 'css', 'lua', 'markdown', 'vim', 'vimdoc', 'tsx', 'typescript', 'fennel', 'clojure' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
