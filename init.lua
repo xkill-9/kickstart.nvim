@@ -684,6 +684,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        biome = {},
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
@@ -792,19 +793,19 @@ require('lazy').setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        javascript = { 'prettierd', 'prettier', stop_after_first = true },
-        javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-        typescript = { 'prettierd', 'prettier', stop_after_first = true },
-        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        javascript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+        javascriptreact = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
         vue = { 'prettierd' },
-        css = { 'prettierd' },
+        css = { 'biome', 'prettierd', stop_after_first = true },
         scss = { 'prettierd' },
         less = { 'prettierd' },
         html = { 'prettierd' },
-        json = { 'prettierd' },
+        json = { 'biome', 'prettierd', stop_after_first = true },
         jsonc = { 'prettierd' },
         yaml = { 'prettierd' },
-        markdown = { 'prettierd' },
+        markdown = { 'biome', 'prettierd', stop_after_first = true },
         ['markdown.mdx'] = { 'prettierd' },
         graphql = { 'prettierd' },
       },
@@ -956,7 +957,24 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'css', 'tsx', 'typescript', 'fennel', 'clojure' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'css',
+        'tsx',
+        'typescript',
+        'fennel',
+        'clojure',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
