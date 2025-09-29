@@ -91,7 +91,7 @@ vim.g.python3_host_prog = '/usr/bin/python3'
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = ','
 
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
@@ -956,7 +956,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'css', 'tsx', 'typescript', 'fennel', 'clojure' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
