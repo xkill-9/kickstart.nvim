@@ -382,7 +382,7 @@ require('lazy').setup({
 
       -- Hijack netrw with telescope.find_files
       local find_files_hijack_netrw = vim.api.nvim_create_augroup(
-      'find_files_hijack_netrw', { clear = true })
+        'find_files_hijack_netrw', { clear = true })
       -- clear FileExplorer appropriately to prevent netrw from launching on folders
       -- netrw may or may not be loaded before telescope-find-files
       -- conceptual credits to nvim-tree and telescope-file-browser
@@ -443,10 +443,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes')
-        .get_dropdown {
-          winblend = 10,
-          previewer = false,
-        })
+          .get_dropdown {
+            winblend = 10,
+            previewer = false,
+          })
       end, { desc = '[/] Fuzzily search in current buffer' })
 
       -- Also possible to pass additional configuration options.
@@ -584,15 +584,15 @@ require('lazy').setup({
             return
           end
 
-          if client.supports_method 'textDocument/formatting' then
-            -- Format the current buffer on save
-            vim.api.nvim_create_autocmd('BufWritePre', {
-              buffer = event.buf,
-              callback = function()
-                vim.lsp.buf.format { bufnr = event.buf, id = client.id }
-              end,
-            })
-          end
+          -- if client.supports_method 'textDocument/formatting' then
+          --   -- Format the current buffer on save
+          --   vim.api.nvim_create_autocmd('BufWritePre', {
+          --     buffer = event.buf,
+          --     callback = function()
+          --       vim.lsp.buf.format { bufnr = event.buf, id = client.id }
+          --     end,
+          --   })
+          -- end
 
           if client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -626,6 +626,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        biome = {},
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
