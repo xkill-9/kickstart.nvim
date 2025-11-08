@@ -359,7 +359,6 @@ require('lazy').setup({
       spec = {
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
   },
@@ -731,9 +730,10 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         -- SERVERS
         'cssls',
+        'clojure_lsp',
         'html',
         'emmet_ls',
-        'tsserver',
+        'ts_ls',
         'graphql',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
