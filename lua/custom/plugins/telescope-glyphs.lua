@@ -1,19 +1,10 @@
 return {
   'ghassan0/telescope-glyph.nvim',
+  keys = {
+    { '<leader>b', group = '[B]rowse' },
+    { '<leader>bg', '<cmd>Telescope glyph<cr>', desc = '[B]rowse [G]lyphs' },
+  },
   config = function()
-    local wk = require 'which-key'
-
-    -- Load extension
     pcall(require('telescope').load_extension, 'glyph')
-
-    -- Register mappings
-    wk.register({
-      b = {
-        name = '[B]rowse',
-        g = { '<cmd>Telescope glyph<cr>', '[B]rowse [G]lyphs' },
-      },
-    }, {
-      prefix = '<leader>',
-    })
   end,
 }
